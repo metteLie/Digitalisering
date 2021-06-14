@@ -18,3 +18,10 @@ const getDokumenter = async() => {
     })
 };
 
+
+
+module.exports ={
+    getDokumenter
+};
+
+
