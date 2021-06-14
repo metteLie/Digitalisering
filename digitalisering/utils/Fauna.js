@@ -16,12 +16,30 @@ const getDokumenter = async() => {
         delete dokument.ref;
         return dokument;
     })
+    return dokumenter;
+};
+
+const createDokument = async (id, Resultat, Dato, Sign, Anmerkninger) => {
+    return await faunaClient.query(
+        q.Create(q.Collection('dokumenter'), {
+            data: {id, pkt, Resultat, Dato, Sign, Anmerkninger},
+        })
+    );
 };
 
 
+const deleteDokument = async (id) => {
+    return await faunaClient.query(
+        q.Delete(q.Ref(q.Collection('dokumenter'),
+        ))
+    );
+};
+
 
 module.exports ={
-    getDokumenter
+    getDokumenter,
+    createDokument,
+    deleteDokument
 };
 
 
