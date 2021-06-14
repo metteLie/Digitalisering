@@ -13,6 +13,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.title}>Hjemmeside</h1>
       <form
         onSubmit={async () => {
           const res = await fetch("/api/hello", {
@@ -35,5 +36,6 @@ export default function Home() {
         <button type="submit">Lagre</button>
       </form>
     </div>
+
   );
 }
