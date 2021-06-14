@@ -19,7 +19,7 @@ const getDokumenter = async() => {
     return dokumenter;
 };
 
-const createDokument = async (id, Resultat, Dato, Sign, Anmerkninger) => {
+const createDokument = async (id, Pkt, Resultat, Dato, Sign, Anmerkninger) => {
     return await faunaClient.query(
         q.Create(q.Collection('dokumenter'), {
             data: {id, pkt, Resultat, Dato, Sign, Anmerkninger},
