@@ -1,8 +1,6 @@
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import useSWR from "swr";
-import Navbar from '../comps/Navbar';
-import Footer from '../comps/Footer';
 import Link from 'next/link';
 
 
@@ -15,7 +13,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <Navbar />
       <form
         onSubmit={async () => {
           const res = await fetch("/api/hello", {
@@ -37,7 +34,6 @@ export default function Home() {
 
         <button type="submit">Lagre</button>
       </form>
-      <Footer />
     </div>
   );
 }
