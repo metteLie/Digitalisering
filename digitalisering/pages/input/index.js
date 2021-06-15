@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import Head from 'next/head';
+import {skjema} from './oppgave1.js';
+import { useState } from "react";
 
+let punkt = [...Array(22).keys()];
+let kjente_avvik = punkt.slice(0,6);
 
-// Fra youtube, tror ikke vi trenger dette^
-
-const registrer = (/* {ting} */) => {
+const registrer = () => {
     return(
         <>
         <Head>
@@ -13,7 +15,7 @@ const registrer = (/* {ting} */) => {
         </Head>
             <div>
             <h1>Kode her i return</h1>
-            
+            {skjema()}
             </div>
         </>
     )
