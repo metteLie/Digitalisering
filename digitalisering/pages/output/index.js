@@ -19,10 +19,12 @@ const rediger = ({ting}) => {
         </Head>
         <div>
             <h1>Kode i return</h1>
+            <h2> Merk! fetch må hentes fra fauna
+            </h2>
             {ting.map(objekt => (
                 <Link href={'/output/'+objekt.id} key={objekt.id}>
                     <a>
-                        <h3>{objekt.navn}</h3>
+                        <h3>{objekt.name}</h3>
                     </a>
                 </Link>
                 )) }
