@@ -1,5 +1,4 @@
-/* usikker om vi skal bruke denne
-kan potensielt være side for ulike data 
+/* Side for ulike data 
 for gitt id */
 
 export const getStaticPaths = async () => {
@@ -32,6 +31,10 @@ const sjekkliste = ({objekt}) => {
     return ( 
     <div>
         <h1>Dette skal vise sjekklisten for { objekt.name } </h1>
+        <h2>Burde komme opp navn?
+            Merk igjen fetch må hentes fra fauna, 
+            dette er kun illustrasjon
+        </h2>
     </div>  );
 }
  

@@ -19,7 +19,8 @@ const rediger = ({ting}) => {
         </Head>
         <div>
             <h1>Kode i return</h1>
-            <h2> Merk! fetch må hentes fra fauna
+            <h2> Merk! fetch må hentes fra fauna,
+                dette er kun eksempel
             </h2>
             {ting.map(objekt => (
                 <Link href={'/output/'+objekt.id} key={objekt.id}>
