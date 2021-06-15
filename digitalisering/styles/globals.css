@@ -27,6 +27,10 @@ nav a {
 nav .logo {
   margin-right: auto;
 }
+nav a:hover{
+  color: rgb(173, 165, 165);
+}
+
 footer {
   display: block;
   text-align: center;
