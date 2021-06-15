@@ -14,7 +14,7 @@ const registrer = () => {
             <meta name="keywords" content="registrering"/>
         </Head>
             <div>
-            <h1>Kode her i return</h1>
+            <h1>Sjekkliste</h1>
             {skjema()}
             </div>
         </>

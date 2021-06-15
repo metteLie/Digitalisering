@@ -48,3 +48,21 @@ footer {
   color: #7999ff;
   text-decoration: underline;
 } 
+
+table {
+  display: -moz-grid;
+  text-align: left;
+  border-color: #777;
+  grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+  border-style: solid;
+}
+  
+td {
+  text-align: left;
+  margin-right: 1px;
+  margin: 10px auto 80px;
+  padding: 0px 0px;
+  border-style: groove;
+
+}
