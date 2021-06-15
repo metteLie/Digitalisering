@@ -3,7 +3,7 @@ import Image from 'next/image'; // funket ikke?
 
 const Navbar = () => {
     return(
-        <nav className={styles.nav}>
+        <nav>
             <div className="logo">
             <img src= "/logo.png" alt="site logo" width={110} height={110} />
             </div> 
