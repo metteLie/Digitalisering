@@ -1,17 +1,10 @@
 import Link from 'next/link';
 import Head from 'next/head';
 
-export const getStaticProps = async () => {
-    const res = await fetch('http://jsonplaceholder.typicode.com/users');
-    const data = await res.json();
 
-    return { 
-        props: {ting: data}
-    }
-}
 // Fra youtube, tror ikke vi trenger dette^
 
-const registrer = () => {
+const registrer = (/* {ting} */) => {
     return(
         <>
         <Head>
@@ -20,7 +13,8 @@ const registrer = () => {
         </Head>
             <div>
             <h1>Kode her i return</h1>
-        </div>
+            
+            </div>
         </>
     )
 }
