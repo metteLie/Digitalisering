@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import useSWR from "swr";
 import Link from 'next/link';
+import Head from "next/head";
 
 
 export default function Home() {
@@ -13,11 +14,10 @@ export default function Home() {
 
   return (
     <>
-    <head>
-      <title>
-        Profilteam | Hjem
-      </title>
-    </head>
+    <Head>
+      <title>Profilteam | Hjem</title>
+      <meta name="keywords" content="hjemmeside"/>
+    </Head>
     <div className={styles.container}>
       <h1 className={styles.title}>Hjemmeside</h1>
       <form
