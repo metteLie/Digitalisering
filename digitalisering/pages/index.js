@@ -12,6 +12,12 @@ export default function Home() {
   console.log(state);
 
   return (
+    <>
+    <head>
+      <title>
+        Profilteam | Hjem
+      </title>
+    </head>
     <div className={styles.container}>
       <h1 className={styles.title}>Hjemmeside</h1>
       <form
@@ -36,6 +42,7 @@ export default function Home() {
         <button type="submit">Lagre</button>
       </form>
     </div>
+    </>
 
   );
 }
