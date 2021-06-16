@@ -5,9 +5,9 @@ export function skjema() {
     const [state, setState] = useState("");
     let punkt = [...Array(22).keys()];
     let kjente_avvik = punkt.slice(0,6);
-    let montasje = punkt.slice(6,10);
-    let solavskjerming = punkt.slice(10,13);
-    let feil = punkt.slice(13,15);
+    let montasje = punkt.slice(6,16);
+    let solavskjerming = punkt.slice(16,19);
+    let feil = punkt.slice(19,22);
     
     let tekst = [
         "Mottatt avviksmelding på forutgående arbeider:", 
@@ -36,27 +36,51 @@ export function skjema() {
     return ( 
         <table>
             <thead>
-                Skjema
+                <tr>
+                    <th> Profilteam.as</th>
+                    <tr>Skjema: Sjekkliste</tr>
+                    <th></th>
+                    <tr>Skjema nr:</tr> 
+                   
+                </tr> 
+                <tr>
+                    <th></th>
+                    <th>Vindu FOP</th>
+                    <th></th>
+                    <tr> Rev.nr/dato:</tr>
+                </tr>
+                <tr>
+                    <th><hr /></th>
+                    <th><hr /></th>
+                    <th><hr /></th>
+                    <th> <hr /></th>
+                    <th><hr /></th>
+
+                </tr>
+            
             </thead>
-            <tbody>
+            
+            <br />
+            <tbody> 
+
             <tr>
                 <th>pkt</th>
                 <th>Tekst</th>
                 <th>Resultat</th>
-                <th>Dato</th>
+                <th>Anmerkninger</th>
             </tr>
 
 
             <thead>
                 Allerede kjente avvik  
             </thead>
-            {kjente_avvik.map((k, index)=>{
+            {kjente_avvik.map((index, k)=>{
                 return(<tr>
-                <td>1,{index}</td>
-                <td>{tekst[k]}</td>
+                <td>1,{k}</td>
+                <td>{tekst[index]}</td>
                 <td> ja / nei</td>
                 <td><input
-                    placeholder="test"
+                    placeholder="fyll inn"
                     onChange={(e) => {
                         setState(e.target.value);
                 }}
@@ -69,13 +93,13 @@ export function skjema() {
             <thead>
                 Montasje  
             </thead>
-            {montasje.map((k, index)=>{
+            {montasje.map((index, k)=>{
                 return(<tr>
                 <td>2,{k}</td>
                 <td>{tekst[index]}</td>
                 <td> ja / nei</td>
                 <td><input
-                    placeholder="test"
+                    placeholder="fyll inn"
                     onChange={(e) => {
                         setState(e.target.value);
                 }}
@@ -88,13 +112,13 @@ export function skjema() {
             <thead>
                 Solskjerming  
             </thead>
-            {solavskjerming.map((k, index)=>{
+            {solavskjerming.map((index, k)=>{
                 return(<tr>
                 <td>3,{k}</td>
                 <td>{tekst[index]}</td>
                 <td> ja / nei</td>
                 <td><input
-                    placeholder="test"
+                    placeholder="fyll inn"
                     onChange={(e) => {
                         setState(e.target.value);
                 }}
@@ -105,13 +129,13 @@ export function skjema() {
             <thead>
                 Feil/skader  
             </thead>
-            {feil.map((k, index)=>{
+            {feil.map((index, k)=>{
                 return(<tr>
-                <td>3,{k}</td>
+                <td>4,{k}</td>
                 <td>{tekst[index]}</td>
                 <td> ja / nei</td>
                 <td><input
-                    placeholder="test"
+                    placeholder="fyll inn"
                     onChange={(e) => {
                         setState(e.target.value);
                 }}
