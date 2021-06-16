@@ -66,3 +66,12 @@ td {
   border-style: groove;
 
 }
+
+thead {
+  text-align: left;
+  margin-right: 1px;
+  margin: 10px auto 80px;
+  padding: 0px 0px;
+  border-style: groove;
+}
+
