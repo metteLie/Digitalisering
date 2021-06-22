@@ -4,8 +4,16 @@ import useSWR from "swr";
 import Link from 'next/link';
 import Head from "next/head";
 
+export const getStaticProps = async () => {
+    const res = await fetch('http://jsonplaceholder.typicode.com/users');
+    const data = await res.json();
 
-export default function Home() {
+    return { 
+        props: {ting: data}
+    }
+}
+
+export default function Home({ting}) {
   const [state, setState] = useState("");
   const { data } = useSWR(`/api`, (url) =>
     fetch(url).then((res) => res.json())
@@ -40,9 +48,24 @@ export default function Home() {
         />
 
         <button type="submit">Lagre</button>
+        
+        <div>
+            <h1>Kode i return</h1>
+            <h2> Merk! fetch må hentes fra fauna,
+                dette er kun eksempel
+            </h2>
+            {ting.map(objekt => (
+                <Link href={'/output/'+objekt.id} key={objekt.id}>
+                    <a>
+                        <h3>{objekt.name}</h3>
+                    </a>
+                </Link>
+                )) }
+        </div>
       </form>
     </div>
     </>
 
   );
 }
+
