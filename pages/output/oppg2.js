@@ -51,9 +51,9 @@ export default function OnSubmit() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="right">Index</TableCell>
+                <TableCell align="left">Index</TableCell>
                 {tekst.map((t, index) => (
-                  <TableCell key={index} align="right">
+                  <TableCell key={index} align="left">
                     {t}
                   </TableCell>
                 ))}
@@ -62,7 +62,7 @@ export default function OnSubmit() {
             <TableBody>
               {data.map((row, i) => (
                 <TableRow key={row.id}>
-                  <TableCell align="right">{i + 1}</TableCell>
+                  <TableCell align="right">{i +1}</TableCell>
                   {tekst.map((t, index) => (
                     <TableCell align="right" key={index}>
                       {row[tekst[index].slice(0, 10)]}

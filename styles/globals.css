@@ -75,3 +75,6 @@ thead {
   border-style: groove;
 }
 
+div a:hover{
+  color: rgb(173, 165, 165);
+}

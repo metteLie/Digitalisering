@@ -1,16 +1,23 @@
 import useSWR, { mutate } from "swr";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
+import { useForm } from "react-hook-form";
 
-export default function OnSubmit() {
+
+export default function onSubmit() {
+
   const { data } = useSWR(`/api/hello`, (url) =>
     fetch(url).then((res) => res.json())
   );
+  const { register, handleSubmit } = useForm({
+        
+  });
+
+  async function onSubmit(data) { 
+      const res = await fetch("/api/hello", { 
+          body: JSON.stringify(data), 
+          method: "UPDATE",
+      });
+      mutate: ("/api");
+      }
 
   let punkt = [...Array(22).keys()];
   let kjente_avvik = punkt.slice(0, 6);
@@ -47,32 +54,117 @@ export default function OnSubmit() {
     <>
       {" "}
       {data ? (
-        <TableContainer component={Paper}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="right">Index</TableCell>
-                {tekst.map((t, index) => (
-                  <TableCell key={index} align="right">
-                    {t}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map((row, i) => (
-                <TableRow key={row.id}>
-                  <TableCell align="right">{i + 1}</TableCell>
-                  {tekst.map((t, index) => (
-                    <TableCell align="right" key={index}>
-                      {row[tekst[index].slice(0, 10)]}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <form onSubmit={handleSubmit(onSubmit)}>
+        <table>
+            <thead>
+                <tr>
+                    <th> Profilteam.as</th>
+                    <tr>Skjema: Sjekkliste</tr>
+                    <th></th>
+                    <tr>Skjema nr:</tr> 
+                   
+                </tr> 
+                <tr>
+                    <th></th>
+                    <th>Vindu FOP</th>
+                    <th></th>
+                    <tr> Rev.nr/dato:</tr>
+                </tr>
+                <tr>
+                    <th><hr /></th>
+                    <th><hr /></th>
+                    <th><hr /></th>
+                    <th><hr /></th>
+                    <th><hr /></th>
+
+                </tr>
+            
+            </thead>
+            
+            <br />
+            <tbody> 
+
+            <tr>
+                <th>pkt</th>
+                <th>Tekst</th>
+                <th>Resultat</th>
+                <th>Anmerkninger</th>
+            </tr>
+
+
+            <thead>
+                Allerede kjente avvik  
+            </thead>
+            {kjente_avvik.map((index, k)=>{
+                return(<tr key ={k}>
+                <td>1,{k}</td>
+                <td>{tekst[index]}</td>
+                <td>ja / nei</td>
+                <td><input
+                    placeholder= {data[index[k]]? data[index[k]]: "fyll inn"}
+                    {...register(tekst[index].slice(0,10))}
+                
+                    /></td>
+            </tr>);
+            })}
+
+            <br />
+
+            <thead>
+                Montasje  
+            </thead>
+            {montasje.map((index, k)=>{
+                return(<tr key= {k}>
+                <td>2,{k}</td>
+                <td>{tekst[index]}</td>
+                <td> ja / nei</td>
+                <td><input
+                    placeholder={data[index[k]]? data[index[k]]: "fyll inn"}
+                    {...register(tekst[index].slice(0,10))}
+                
+                    /></td>
+            </tr>);
+            })}
+            
+
+            <br />
+
+            <thead>
+                Solskjerming  
+            </thead>
+            {solavskjerming.map((index, k)=>{
+                return(<tr key= {k}>
+                <td>3,{k}</td>
+                <td>{tekst[index]}</td>
+                <td> ja / nei</td>
+                <td><input
+                    placeholder={data[index[k]]? data[index[k]]: "fyll inn"}
+                    {...register(tekst[index].slice(0,10))}
+                
+                    /></td>
+            </tr>);
+            })}
+            
+            <br />
+            <thead>
+                Feil/skader  
+            </thead>
+            {feil.map((index, k)=>{
+                return(<tr key={k}> 
+                <td>4,{k}</td>
+                <td>{tekst[index]}</td>
+                <td> ja / nei</td>
+                <td><input
+                    placeholder={data[index[k]]? data[index[k]]: "fyll inn"}
+                    {...register(tekst[index].slice(0,10))}
+                
+                    /></td>
+            </tr>);
+            })}
+            <button type = "submit"> lagre </button>
+            </tbody>
+        </table>
+        </form>
       ) : null}{" "}
     </>
   );
