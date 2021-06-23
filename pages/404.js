@@ -7,7 +7,7 @@ const NotFound = () => {
     useEffect(()=>{
         setTimeout(() => {
             //router.go(-1) går tilbake til forrige side 
-            router.push('/')
+            router.push('/output')
         }, 3000)
     }, [])
     return ( 
