@@ -62,9 +62,9 @@ export default function OnSubmit() {
             <TableBody>
               {data.map((row, i) => (
                 <TableRow key={row.id}>
-                  <TableCell align="right">{i +1}</TableCell>
+                  <TableCell align="right" >{i +1}</TableCell>
                   {tekst.map((t, index) => (
-                    <TableCell align="right" key={index}>
+                    <TableCell align="right" key={index} style={{ width: "4cm" }}>
                       {row[tekst[index].slice(0, 10)]}
                     </TableCell>
                   ))}

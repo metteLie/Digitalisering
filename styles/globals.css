@@ -78,3 +78,10 @@ thead {
 div a:hover{
   color: rgb(173, 165, 165);
 }
+
+.TableCell {
+  text-align: left;
+  margin-right: 1px;
+  padding: 0px 0px;
+  width: 4cm;
+}

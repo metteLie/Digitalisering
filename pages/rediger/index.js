@@ -10,9 +10,9 @@ const rediger = () => {
                 <meta name="keywords" content="redigering"/>
             </Head>
             <div>
-                <h1>Kode i return</h1>
+                <h1>Rediger dokument</h1>
                 <div>
-                    <h1>Oversikt</h1>
+                    <h3>index: id</h3>
                     {OnSubmit()}    
                 </div>
             </div>

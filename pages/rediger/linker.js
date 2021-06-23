@@ -12,7 +12,6 @@ export default function OnSubmit() {
       {" "}
       {data ? (
     <div>
-        <h1>Kode i return</h1>
         {data.map((objekt, k) => (
             <Link href={'/rediger/'+objekt.id} key={objekt.id}>
                 <a>
