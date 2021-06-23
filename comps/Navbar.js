@@ -9,7 +9,7 @@ const Navbar = () => {
             </div> 
             <Link href="/output"><a>Oversikt</a></Link>
             <Link href="/rediger"><a>Rediger dokument</a></Link>
-            <Link href="/input"><a>Last opp dokument</a></Link>
+            <Link href="/input"><a>Nytt dokument</a></Link>
             
         </nav>
     );
