@@ -1,7 +1,12 @@
 import { useState } from "react";
 import Link from "next/link";
-
+import { useForm } from "react-hook-form";
 export function skjema() {
+    const { register, handleSubmit } = useForm({
+        
+      });
+    async function onSubmit(data) { const res = await fetch("/api/hello", { body: JSON.stringify(data), method: "POST", });}
+      
     const [state, setState] = useState("");
     let punkt = [...Array(22).keys()];
     let kjente_avvik = punkt.slice(0,6);
@@ -34,6 +39,7 @@ export function skjema() {
         "Utført i hht tegning:"
     ]
     return ( 
+        <form onSubmit={handleSubmit(onSubmit)}>
         <table>
             <thead>
                 <tr>
@@ -53,7 +59,7 @@ export function skjema() {
                     <th><hr /></th>
                     <th><hr /></th>
                     <th><hr /></th>
-                    <th> <hr /></th>
+                    <th><hr /></th>
                     <th><hr /></th>
 
                 </tr>
@@ -75,15 +81,14 @@ export function skjema() {
                 Allerede kjente avvik  
             </thead>
             {kjente_avvik.map((index, k)=>{
-                return(<tr>
+                return(<tr key ={k}>
                 <td>1,{k}</td>
                 <td>{tekst[index]}</td>
-                <td> ja / nei</td>
+                <td>ja / nei</td>
                 <td><input
                     placeholder="fyll inn"
-                    onChange={(e) => {
-                        setState(e.target.value);
-                }}
+                    {...register(tekst[index].slice(0,10))}
+                
                     /></td>
             </tr>);
             })}
@@ -94,18 +99,18 @@ export function skjema() {
                 Montasje  
             </thead>
             {montasje.map((index, k)=>{
-                return(<tr>
+                return(<tr key= {k}>
                 <td>2,{k}</td>
                 <td>{tekst[index]}</td>
                 <td> ja / nei</td>
                 <td><input
                     placeholder="fyll inn"
-                    onChange={(e) => {
-                        setState(e.target.value);
-                }}
+                    {...register(tekst[index].slice(0,10))}
+                
                     /></td>
             </tr>);
             })}
+            
 
             <br />
 
@@ -113,37 +118,37 @@ export function skjema() {
                 Solskjerming  
             </thead>
             {solavskjerming.map((index, k)=>{
-                return(<tr>
+                return(<tr key= {k}>
                 <td>3,{k}</td>
                 <td>{tekst[index]}</td>
                 <td> ja / nei</td>
                 <td><input
                     placeholder="fyll inn"
-                    onChange={(e) => {
-                        setState(e.target.value);
-                }}
+                    {...register(tekst[index].slice(0,10))}
+                
                     /></td>
             </tr>);
             })}
+            
             <br />
             <thead>
                 Feil/skader  
             </thead>
             {feil.map((index, k)=>{
-                return(<tr>
+                return(<tr key={k}> 
                 <td>4,{k}</td>
                 <td>{tekst[index]}</td>
                 <td> ja / nei</td>
                 <td><input
                     placeholder="fyll inn"
-                    onChange={(e) => {
-                        setState(e.target.value);
-                }}
+                    {...register(tekst[index].slice(0,10))}
+                
                     /></td>
             </tr>);
             })}
-            
+            <button type = "submit"> lagre </button>
             </tbody>
         </table>
+        </form>
     );
 };
