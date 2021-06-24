@@ -1,18 +1,28 @@
+import { useRouter } from 'next/router'
 import useSWR, { mutate } from "swr";
 import { useForm } from "react-hook-form";
 
 
-export default function onSubmit() {
 
+
+export default function onSubmit() {
+  
   const { data } = useSWR(`/api/hello`, (url) =>
-    fetch(url).then((res) => res.json())
+  fetch(url).then((res) => res.json())
   );
   const { register, handleSubmit } = useForm({
-        
+    
   });
+  
+  const id = () => {
+    const router = useRouter()
+    const { id } = router.query
+  
+    return {id}
+  }
 
   async function onSubmit(data) { 
-      const res = await fetch("/api/hello", { 
+    const res = await fetch("/api/hello", { 
           body: JSON.stringify(data), 
           method: "UPDATE",
       });
@@ -50,9 +60,13 @@ export default function onSubmit() {
     "Utført i hht tegning:",
   ];
   console.log(data);
+
+
+
   return (
     <>
       {" "}
+      <h1>id: {id}</h1>
       {data ? (
         <form onSubmit={handleSubmit(onSubmit)}>
         <table>
