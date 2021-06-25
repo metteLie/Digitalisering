@@ -1,5 +1,4 @@
 import faunadb, { Client, Collection } from "faunadb";
-import { Body } from "node-fetch";
 const client = new Client({
   secret: "fnAEMFFhWoACBZJGJSlKVaVzdfzZwVxiauTfpjax",
 });
