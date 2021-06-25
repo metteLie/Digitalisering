@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
-import { skjema } from "./oppgave1.js";
+import Skjema from "./oppgave1.js";
 
 let punkt = [...Array(22).keys()];
 let kjente_avvik = punkt.slice(0, 6);
@@ -14,7 +14,7 @@ const registrer = () => {
       </Head>
       <div>
         <h1>Sjekkliste</h1>
-        {skjema()}
+        <Skjema />
       </div>
     </>
   );
