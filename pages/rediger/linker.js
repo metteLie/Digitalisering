@@ -2,6 +2,7 @@ import useSWR, { mutate } from "swr";
 import Link from 'next/link';
 
 export default function OnSubmit() {
+    
   const { data } = useSWR(`/api/hello`, (url) =>
     fetch(url).then((res) => res.json())
   );
