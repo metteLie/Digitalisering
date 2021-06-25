@@ -1,25 +1,20 @@
 import { useRouter } from 'next/router'
 import useSWR, { mutate } from "swr";
 import { useForm } from "react-hook-form";
-
+import hentDokument from '../api/hent';
 
 
 
 export default function onSubmit() {
   
-  const { data } = useSWR(`/api/hello`, (url) =>
-  fetch(url).then((res) => res.json())
-  );
+  
+  const router = useRouter();
+  const { id } = router.query;
+  const { data } = hentDokument(id);
   const { register, handleSubmit } = useForm({
     
   });
   
-  const id = () => {
-    const router = useRouter()
-    const { id } = router.query
-  
-    return {id}
-  }
 
   async function onSubmit(data) { 
     const res = await fetch("/api/hello", { 
@@ -27,7 +22,7 @@ export default function onSubmit() {
           method: "UPDATE",
       });
       mutate: ("/api");
-      }
+      };
 
   let punkt = [...Array(22).keys()];
   let kjente_avvik = punkt.slice(0, 6);
@@ -62,11 +57,13 @@ export default function onSubmit() {
   console.log(data);
 
 
-
   return (
     <>
       {" "}
+      
+
       <h1>id: {id}</h1>
+
       {data ? (
         <form onSubmit={handleSubmit(onSubmit)}>
         <table>
