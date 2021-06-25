@@ -6,6 +6,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+
 export default function OnSubmit() {
   const { data } = useSWR(`/api/hello`, (url) =>
     fetch(url).then((res) => res.json())
@@ -41,7 +42,6 @@ export default function OnSubmit() {
     "Feil / skader utbedret:",
     "Utført i hht tegning:",
   ];
-  console.log(data);
   return (
     <>
       {" "}
@@ -50,9 +50,9 @@ export default function OnSubmit() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell align="right">Index</TableCell>
+                <TableCell align="left">Index</TableCell>
                 {tekst.map((t, index) => (
-                  <TableCell key={index} align="right">
+                  <TableCell key={index} align="left">
                     {t}
                   </TableCell>
                 ))}
@@ -61,9 +61,9 @@ export default function OnSubmit() {
             <TableBody>
               {data.map((row, i) => (
                 <TableRow key={row.id}>
-                  <TableCell align="right">{i + 1}</TableCell>
+                  <TableCell align="right" >{i +1}</TableCell>
                   {tekst.map((t, index) => (
-                    <TableCell align="right" key={index}>
+                    <TableCell align="right" key={index} style={{ width: "4cm" }}>
                       {row[tekst[index].slice(0, 10)]}
                     </TableCell>
                   ))}

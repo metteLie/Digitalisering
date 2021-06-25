@@ -38,5 +38,17 @@ export default function handler(req, res) {
         res.status(200).json(newData);
       })
       .catch((err) => res.status(400).json(err));
-  }
+  } else if (req.method === "PUT") {
+    const data = JSON.parse(req.body);
+    client.query(q.Update(
+      q.Ref(q.Collection('oppgave2'), data.id),
+      {
+        data
+      },
+    )
+    )
+    .then((ret)=>console.log(ret))
+    .catch((err)=> console.error('Error; %s', err))
+  };
 }
+
