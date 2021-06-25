@@ -42,7 +42,6 @@ export default function OnSubmit() {
     "Feil / skader utbedret:",
     "Utført i hht tegning:",
   ];
-  console.log(data);
   return (
     <>
       {" "}

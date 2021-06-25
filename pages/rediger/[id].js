@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import useSWR, { mutate } from "swr";
 import { useForm } from "react-hook-form";
-import hentDokument from '../api/hent';
-
+import { useEffect } from 'react';
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 
 export default function onSubmit() {
@@ -10,16 +10,19 @@ export default function onSubmit() {
   
   const router = useRouter();
   const { id } = router.query;
-  const { data } = hentDokument(id);
-  const { register, handleSubmit } = useForm({
+  const { data } = useSWR(`/api/get/${id}`, fetcher)
+  const { register, handleSubmit, reset } = useForm({
     
   });
-  
+  useEffect(() => {
+  reset(data)
+  console.log(data)
+  }, [data]);
 
   async function onSubmit(data) { 
     const res = await fetch("/api/hello", { 
           body: JSON.stringify(data), 
-          method: "UPDATE",
+          method: "PUT",
       });
       mutate: ("/api");
       };
@@ -54,7 +57,6 @@ export default function onSubmit() {
     "Feil / skader utbedret:",
     "Utført i hht tegning:",
   ];
-  console.log(data);
 
 
   return (
